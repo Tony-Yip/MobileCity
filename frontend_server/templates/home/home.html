@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<br>
+<br>
+<div>
+	<div id="game-container" style="text-align: center"></div>
+	<div style="width:55%; margin: 0 auto; margin-top:4.5em">
+		
+
+			<div class="row">
+				<div class="col-md-4">
+					<h2 style="font-size:4em"><span id="game-weather-content"></span></h2> 
+				</div>
+				
+				<div class="col-md-6">
+					<h2 style="font-size:4em"><span id="game-time-content"></span></h2> 
+				</div>
+
+				
+				<div class="col-md-2">
+					<h2 style="text-align: right">
+						<button id="play_button" type="button" class="btn btn-default">
+							<strong style=" font-size:3em"><i class="glyphicon glyphicon-play"></i> &nbsp;Play</strong>
+						</button>
+					
+						<button id="pause_button" type="button" class="btn btn-default">
+							<strong style=" font-size:3em"><i class="glyphicon glyphicon-pause"></i> &nbsp;Pause</strong>
+						</button>
+					</h2>
+				</div>
+				
+			</div>		
+		
+		
+
+		<br>
+		<hr style="border-color:#999999">
+		<br>
+
+		{% for p_name, p_name_os in persona_names %}
+		<div class="media" style="background-color:#EEEEEE; padding:1em; padding-left:3.5em; padding-right:2em; border-radius:10px; position: relative; width: 4500px; left: -400px;">
+		<div class="media-left media-middle">
+			<a href="#">
+			  	{% with image_path='assets/characters/MT.png' %}
+					<img class="media-object" src="{% static image_path %}" style="width:5em" alt="{{ p_name_os }}">
+				{% endwith %}
+			</a>
+		</div>
+
+		<div class="media-body" style='padding-left:3em; padding-top:0.5em; padding-bottom:1em'>
+			<div class="row" style="display: flex; align-items: center;">
+
+			<h2 class="col-md-8" id="name__{{ p_name_os }}" style="margin-top:0.5em; font-size:5em;">
+				{{p_name_os}} &nbsp;&nbsp;
+			</h2>
+
+			<div class="media-right" id="basic_requirements__{{ p_name_os }}" style="margin-left:-95em; margin-right:0.5em; font-size:2em;"></div>
+			</div>
+
+			</div>
+
+			<div style="display: flex;">
+			<p style="font-size:4em;">
+				<span style="display: block;">
+					<strong>Current Action:</strong> <span id="current_action__{{ p_name_os }}"></span>
+				</span>
+				<span style="display: block;">
+					<strong>Location:</strong> <span id="target_address__{{ p_name_os }}"></span>
+				</span>
+			</p>
+			
+			</div>
+
+			<!-- Current Conversation部分 -->
+			<div>
+			<p style="font-size:4em;"><strong>Current Conversation:</strong> <br><span id="chat__{{ p_name_os }}"></span></p>
+			</div>
+		</div>
+
+
+		<br>
+
+		{% endfor %}
+
+	</div>
+</div>
+
+<div style="padding-bottom:15em"> </div>
+
+<!-- partial -->
+<script src='https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js'></script>
+
+{% include 'home/main_script.html' %}
+{% endblock content %}

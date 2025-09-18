@@ -1,0 +1,25 @@
+<task description>
+The current time is !<INPUT 2>!. !<INPUT 0>! and !<INPUT 1>! meet each other and start talking.
+They are performing the action: <!<INPUT 3>!, in the place: <!<INPUT 4>!.
+Generate their feelings towards each other.
+
+<!<INPUT 11>!
+
+<!<INPUT 12>!
+
+<!<INPUT 0>!'s memory>
+<!<INPUT 5>!
+<!<INPUT 6>!
+<!<INPUT 7>!
+
+<!<INPUT 1>!'s memory>
+<!<INPUT 8>!
+<!<INPUT 9>!
+<!<INPUT 10>!
+
+<output example>
+3
+
+<requirements>
+The result should be an integer, from 0 to 4. 0 means they do not vibe at all, 4 means that they vibe very much. 
+Just output the number only!! Do not output anything else!!!

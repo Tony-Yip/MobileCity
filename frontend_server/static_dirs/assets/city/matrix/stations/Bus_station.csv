@@ -1,0 +1,16 @@
+Company A:Bus:0, Apartment A:Bus:0, 1
+Apartment A:Bus:0, Apartment C:Bus:0, 2
+Apartment C:Bus:0, Company B:Bus:0, 1
+Company B:Bus:0, Department Store:Bus:0, 1
+Department Store:Bus:0, Department Store:Bus:1, 1
+Department Store:Bus:1, Park C:Bus:0, 1
+Park C:Bus:0, Sports Centre:Bus:0, 2
+Sports Centre:Bus:0, Park B:Bus:0, 2
+Park B:Bus:0, Hospital:Bus:1, 1
+Hospital:Bus:1, Hospital:Bus:0, 1
+Hospital:Bus:0, Company A:Bus:0, 1
+Apartment E:Bus:0, Apartment D:Bus:0, 2
+Apartment D:Bus:0, Apartment F:Bus:0, 2
+Apartment F:Bus:0, Apartment G:Bus:0, 2
+Apartment G:Bus:0, Apartment H:Bus:0, 2
+Apartment H:Bus:0, Apartment E:Bus:0, 2

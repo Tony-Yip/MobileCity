@@ -1,0 +1,22 @@
+Apartment A:PMV:0, Apartment B:PMV:0, 0
+Apartment B:PMV:1, Apartment C:PMV:0, 0
+Apartment D:PMV:0, Apartment F:PMV:0, 0
+Apartment F:PMV:1, Apartment G:PMV:0, 0
+Apartment G:PMV:1, Apartment H:PMV:1, 0
+Apartment H:PMV:0, Apartment E:PMV:0, 0
+Company A:PMV:0, Central Crossing 0, 1.25
+Apartment A:PMV:0, Central Crossing 1, 1.25
+Apartment B:PMV:1, Central Crossing 2, 1.25
+Company B:PMV:0, Central Crossing 3, 3.75
+Apartment D:PMV:0, Central Crossing 0, 3.75
+Apartment D:PMV:0, Central Crossing 4, 1.25
+Apartment F:PMV:1, Central Crossing 4, 1.25
+Apartment G:PMV:1, Central Crossing 5, 1.25
+Apartment H:PMV:0, Central Crossing 5, 1.25
+Apartment H:PMV:0, Central Crossing 3, 3.75
+Central Crossing 0, Central Crossing 1, 2.5
+Central Crossing 1, Central Crossing 2, 2.5
+Central Crossing 2, Central Crossing 3, 2.5
+Central Crossing 1, Central Crossing 4, 2.5
+Central Crossing 2, Central Crossing 5, 2.5
+Central Crossing 4, Central Crossing 5, 2.5

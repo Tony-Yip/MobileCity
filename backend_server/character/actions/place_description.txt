@@ -1,0 +1,56 @@
+- Bar
+-- A lively spot featuring a wide selection of beverages and upbeat music. A go-to place for socializing and enjoying nightlife.
+- Movie Theatre
+-- The latest blockbusters light up the screens in a cozy setting. Classic snacks like popcorn and sodas are available for an enhanced experience.
+- Shopping Mall
+-- A bustling hub of fashion, dining, and leisure where you can find everything from high-end brands to local shops. Perfect for a day of retail therapy and entertainment.
+- Swimming Pool
+-- A refreshing oasis perfect for laps or leisure, featuring crystal-clear waters. Ideal for fitness enthusiasts and families alike.
+- Gym
+-- Equipped with state-of-the-art machines and weights for all fitness levels. A dynamic environment to energize and motivate your workouts.
+- Ball Court
+-- A versatile court designed for basketball, volleyball, and other team sports. A hotspot for athletes and friendly competitions.
+- Park: Botanical Garden
+-- A serene haven showcasing vibrant flora and meticulously curated landscapes. A perfect spot for nature lovers and peaceful strolls.
+- Park: Water Park
+-- Thrilling slides and wave pools offer exciting aquatic adventures. Family-friendly fun with attractions for all ages.
+- Park: Community Park
+-- A green space with walking paths, picnic areas, and open fields. Ideal for gatherings, relaxation, and outdoor activities.
+- Park: Playground Park
+-- A fun-filled area with swings, slides, and climbing frames, ensuring endless playtime for children. A safe and engaging environment for families.
+- Park: Nature Reserve
+-- A protected area with rich biodiversity, offering trails and opportunities for wildlife observation. Perfect for hiking and appreciating nature’s beauty.
+- Cafe
+-- A cozy nook serving aromatic coffees and delightful pastries. A popular spot for casual conversations and quick bites.
+- Concert Hall
+-- Acoustically designed to host a diverse range of musical performances. An essential destination for live music enthusiasts and cultural events.
+- Bookstore
+-- A haven for book lovers offering a wide range of genres and cozy reading nooks. Ideal for discovering new stories and enjoying quiet moments.
+- Museum
+-- A repository of art, history, and culture, featuring interactive and educational exhibits. Engage with fascinating collections that captivate all ages.
+- Community Center
+-- A public space that offers a variety of programs and activities designed to meet the needs and interests of local residents. A hub for social, educational, recreational, and cultural engagement, fostering a sense of community and connection.
+- Hospital
+-- A vital institution providing essential healthcare services. It features a calm and professional environment, ensuring care and support for patients and visitors alike.
+- Home
+-- A comforting retreat offering a sense of peace and familiarity. It provides a warm and inviting atmosphere, perfect for relaxation and rejuvenation.
+- Convenience Store
+-- A compact, well-stocked hub offering a wide variety of essentials and treats. Known for its accessibility and quick service, it provides a practical solution for everyday needs.
+- Company Canteen
+-- A lively space designed for employees to unwind and connect. It offers a variety of refreshments and a welcoming atmosphere for casual interactions.
+- Restaurant: Green Leaf Bistro
+-- A cozy spot offering a variety of salads and smoothies. The menu focuses on fresh, organic ingredients. Service is prompt, and prices are reasonable, though it doesn’t specialize in Japanese cuisine.
+- Restaurant: Ramen Express
+-- A bustling ramen shop known for its speedy service and budget-friendly bowls. While the flavors are rich and authentic, the dishes are not particularly health-focused.
+- Restaurant: Sushi Delight
+-- This upscale sushi bar offers a wide selection of fresh sushi and sashimi. The quality is top-notch, though prices are higher. It's a quick stop for sushi lovers.
+- Restaurant: Burger Town
+-- A classic fast-food joint serving juicy burgers and fries. The meals are affordable and served quickly, but they lack nutritional value.
+- Restaurant: Tofu House
+-- Specializing in tofu-based dishes, this restaurant offers a healthy dining option. Prices are reasonable, but the serving time is longer due to the preparation of fresh, made-to-order meals.
+- Restaurant: Tempura Haven
+-- A Japanese eatery focusing on tempura dishes. The food is delicious and quickly served, though it’s not the healthiest option and slightly pricey.
+- Restaurant: Garden Fresh
+-- A delightful vegetarian spot focused on seasonal produce. The menu is health-centric and budget-friendly, but dishes require time to prepare.
+- Restaurant: Yakitori Hub
+-- A lively Japanese grill known for its skewered meats. The food is tasty and served quickly, with an emphasis on affordability, but not on health.

@@ -1,0 +1,15 @@
+Place,Action,Fullness,Energy,Health,Happiness,EarliestStartTime,LatestStartTime,ShortestExecutionTime,EconomicalPlace,TakingCareMentalAndBody,Security,Conscientiousness,Emoji,Importance
+Concert Hall,appreciate the acoustics,-0.2,1.1,0.4,0.7,14:00,20:30,1:30,0.2,0.7,0.7,0.5,🎶,7
+Bookstore,browse new releases,-0.1,0.9,0.2,0.9,10:00,21:00,1:00,0.5,0.6,0.5,0.6,📚,5
+Bookstore,read a book,-0.3,2.3,0.3,1.3,10:00,20:00,2:00,0.4,0.7,0.5,0.7,📖,4
+Bookstore,go to a book club,-0.4,2.2,0.6,1.3,17:00,20:00,2:00,0.3,0.8,0.4,0.8,📚,8
+Museum,study a painting,-0.3,1.9,0.5,0.8,9:00,18:00,1:30,0.4,0.6,0.5,0.7,🎨,6
+Museum,take notes on an exhibit,-0.8,1.4,0.6,1.6,9:00,18:00,1:30,0.5,0.6,0.5,0.8,📝,6
+Museum,explore interactive displays,-0.4,1.8,0.6,1.8,9:00,18:00,2:00,0.6,0.7,0.4,0.7,🔍,6
+Park: Botanical Garden,admire exotic plants,-0.3,1.6,0.8,0.7,6:00,16:30,1:30,0.4,0.8,0.5,0.6,🌺,6
+Park: Water Park,float in the lazy river,-0.4,2.7,0.8,1,6:00,16:00,2:00,0.4,0.6,0.6,0.5,🌊,5
+Park: Community Park,meditate on a quiet lawn,-0.2,0.8,0.5,0.7,6:00,17:00,1:00,0.3,0.9,0.6,0.7,🧘,4
+Park: Playground Park,practice yoga on the grass,-0.3,2,0.6,0.9,6:00,16:30,1:30,0.4,0.9,0.5,0.7,🧘‍♀️,4
+Park: Nature Reserve,listen to the sounds of nature by a stream,-0.6,1.6,1.2,1.4,6:00,16:00,2:00,0.3,0.8,0.7,0.6,🌳,7
+Cafe,sip coffee,0.5,1,-0.3,0.6,8:00,21:00,1:00,0.6,0.4,0.7,0.5,☕,3
+Company Canteen,grab coffee,0.5,1,-0.3,0.6,8:00,22:00,0:15,0.8,0.3,0.6,0.6,☕,2

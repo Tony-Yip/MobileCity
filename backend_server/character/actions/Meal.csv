@@ -1,0 +1,15 @@
+Place,Action,Fullness,Energy,Health,Happiness,EarliestStartTime,LatestStartTime,ShortestExecutionTime,HealthyFood,CheapFood,QuickEat,DomesticFood,Emoji,Importance
+Home,have breakfast,6,-0.5,0.5,0,6:00,11:00,0:30,0.5,0.7,0.4,0.5,🥣,2
+Convenience Store,have breakfast,6,0,-1,0,6:00,11:00,0:10,0.2,0.8,0.9,0.5,🥐,2
+Home,have meal,7,-1,1,0,11:00,22:00,1:00,0.5,0.7,0.4,0.5,🍲,2
+Convenience Store,have meal,6,0,-1,0,11:00,23:50,0:10,0.2,0.8,0.9,0.5,🍛,2
+Company Canteen,have meal,6.6,0,0.7,0,7:00,14:00,0:30,0.6,0.7,0.6,0.5,🍽️,2
+Restaurant: Green Leaf Bistro,have meal,7.6,0,1.1,0,11:00,21:30,0:30,0.9,0.8,0.7,0.2,🥗,2
+Restaurant: Ramen Express,have meal,7.4,0,-0.8,0,11:00,21:40,0:20,0.2,0.9,0.9,0.8,🍜,2
+Restaurant: Sushi Delight,have meal,7.2,0,1,0,11:00,21:35,0:25,0.9,0.4,0.8,0.9,🍣,2
+Restaurant: Burger Town,have meal,8,0,-1.5,0,10:00,21:45,0:15,0.1,0.9,0.9,0.1,🍔,2
+Restaurant: Tofu House,have meal,7,0,1.4,0,11:00,21:20,0:40,0.9,0.7,0.2,0.1,🍲,2
+Restaurant: Tempura Haven,have meal,7.6,0,-1,0,11:00,21:30,0:30,0.3,0.4,0.8,0.9,🍤,2
+Restaurant: Garden Fresh,have meal,7.4,0,1.3,0,11:30,21:25,0:35,0.8,0.4,0.7,0.2,🥙,2
+Restaurant: Yakitori Hub,have meal,8,0,-1.5,0,11:00,21:40,0:20,0.1,0.8,0.9,0.8,🍢,2
+Park: Community Park,have a barbecue picnic,6,-0.5,0,1,11:00,15:30,2:30,0.3,0.6,0.2,0.1,🍖,5

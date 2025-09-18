@@ -1,0 +1,487 @@
+{% load static %}
+
+<div id="step" style="display:none">{{step}}</div>
+<div id="sim_code" style="text-align: center">{{sim_code}}</div>
+<div id="persona_name_list" style="text-align: center">{{persona_name_str}}</div>
+<div id="persona_init_pos" style="display:none">
+	{% for i in persona_init_pos %}
+		<span>{{i.0}},{{i.1}},{{i.2}}</span>
+	{% endfor %}
+</div>
+
+<script type="text/javascript">
+
+    let step = parseInt(document.getElementById('step').innerHTML);
+	let sim_code = document.getElementById('sim_code').innerHTML;
+	// let persona_names = document.getElementById('persona_name_list').innerHTML.split(",");
+
+	let spans = document.getElementById('persona_init_pos').getElementsByTagName('span');
+	let persona_names = {};
+	for(var i = 0, l = spans.length; i < l; i++){
+		let x = spans[i].innerText.split(",");
+		persona_names[x[0]] = [parseInt(x[1]), parseInt(x[2])]
+	}
+	const config = {
+	  type: Phaser.AUTO, // 渲染类型
+	  width: 4160,
+	  height: 3200,
+	  parent: "game-container", // canvas的父元素的id
+	  pixelArt: true,
+	  physics: {
+	    default: "arcade",
+	    arcade: {
+	      gravity: { y: 0 } } },
+	  scene: {
+	    preload: preload,
+	    create: create,
+	    update: update } };    
+
+	const game = new Phaser.Game(config);
+	let cursors;
+	let camera;
+	let player;
+	let plus;
+	let minus;
+	let showDebug = false;
+
+	var spawn_tile_loc = {};
+
+	for (var key in persona_names){
+		spawn_tile_loc[key] = persona_names[key] ;
+	}
+	console.log(spawn_tile_loc);
+
+	var personas = {};
+	var pronunciatios = {};
+	let anims_direction;
+	let pre_anims_direction;
+	let pre_anims_direction_dict = {};
+
+	let curr_maze = "city";
+	let tile_width = 32;
+	let movement_speed = 32; 
+
+	let timer_max = 0;
+	let timer = timer_max;
+
+	let phase = "update"; // "process" or "update" or "execute"
+
+	let execute_movement;
+	let execute_count_max = tile_width/movement_speed;
+	let execute_count = 0;
+	let movement_target = {};
+
+	function preload() {
+		this.load.image("grass", "{% static 'assets/city/visuals/map_assets/v3/tileset-grassland-grass.png' %}");		
+		this.load.image("forest", "{% static 'assets/city/visuals/map_assets/Cute RPG World 40 usd packet/Cute RPG World/Cute RPG World - RPG Maker VX Ace/tilesets/CuteRPG_Forest_C.png' %}");
+		this.load.image("blocks_1", "{% static 'assets/city/visuals/map_assets/blocks/blocks_1.png' %}");	  
+		this.load.image("waterflow", "{% static 'assets/city/visuals/map_assets/atlas/graphics-tiles-waterflow.png' %}");
+		this.load.image("ground", "{% static 'assets/city/visuals/map_assets/atlas/ground_tiles.png' %}");
+		this.load.image("pattern", "{% static 'assets/city/visuals/map_assets/atlas/pattern.png' %}");
+
+		this.load.tilemapTiledJSON("map", "{% static 'assets/city/visuals/map_1001.json' %}");
+
+		this.load.atlas("atlas", 
+						"https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.png", 
+						"https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.json");
+  
+	}
+
+	function create() {
+	  
+	  	const map = this.make.tilemap({ key: "map" });
+
+		const grass = map.addTilesetImage("grass", "grass");
+		const forest = map.addTilesetImage("forest", "forest");
+		const blocks = map.addTilesetImage("blocks_1", "blocks_1");	  
+		const waterflow = map.addTilesetImage("waterflow", "waterflow");
+		const ground = map.addTilesetImage("ground", "ground");
+		const pattern = map.addTilesetImage("pattern", "pattern");
+
+		let tileset_group_1 = [grass, forest, blocks, waterflow, ground, pattern];
+
+		
+		const WallLayer = map.createLayer("Walls", tileset_group_1, 0, 0);
+		WallLayer.setDepth(3)
+		WallLayer.setCollisionByProperty({ collide: true });
+
+		const RoomLayer = map.createLayer("Rooms", tileset_group_1, 0, 0);
+		RoomLayer.setDepth(2)
+
+		const RoadLayer = map.createLayer("Road", tileset_group_1, 0, 0);
+		RoadLayer.setDepth(2)
+
+		const GrassLayer = map.createLayer("Grass", tileset_group_1, 0, 0);
+		GrassLayer.setDepth(1)
+
+		const ArenaLayer = map.createLayer("Arena", tileset_group_1, 0, 0);
+		ArenaLayer.setDepth(3)
+
+		const LocationLayer = map.createLayer("Location", tileset_group_1, 0, 0);
+		LocationLayer.setDepth(3)		  		  
+
+
+		player = this.physics.add.
+						sprite(800, 288, "atlas", "misa-front").
+						setSize(30, 40).
+						setOffset(0, 0);
+		player.setDepth(-1);
+
+
+		// Setting up the camera. 
+		camera = this.cameras.main;
+		camera.startFollow(player);
+		camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+		plus = this.input.keyboard.addKey("W"); 
+		minus  = this.input.keyboard.addKey("X"); 	  
+		cursors = this.input.keyboard.createCursorKeys();
+	
+		const anims = this.anims;
+		for (let i=0; i<Object.keys(spawn_tile_loc).length; i++) { 
+			let persona_name = Object.keys(spawn_tile_loc)[i];
+			let start_pos = [spawn_tile_loc[persona_name][0] * tile_width + tile_width / 2, 
+							spawn_tile_loc[persona_name][1] * tile_width + tile_width];
+			let new_sprite = this.physics.add
+								.sprite(start_pos[0], start_pos[1], `atlas_${i}`, "misa-front")
+								.setSize(60, 80)
+								.setOffset(0, 32); // DEBUG 1 --- I added 32 offset on Dec 29. 
+			// Here, we are creating the persona and its pronunciatio sprites.
+			new_sprite.setDepth(3);
+			personas[persona_name] = new_sprite;
+			pronunciatios[persona_name] = this.add.text(
+										new_sprite.body.x - 6, 
+										new_sprite.body.y - 42 - 32, // DEBUG 1 --- I added 32 offset on Dec 29. 
+										"🦁", {
+										font: "28px monospace", 
+										fill: "#000000", 
+										padding: { x: 8, y: 8}, 
+										backgroundColor: "#ffffff",
+										border:"solid",
+										borderRadius:"10px"}).setDepth(5);
+
+		}
+			
+		anims.create({
+			key: "misa-left-walk",
+			frames: anims.generateFrameNames(`atlas`, { prefix: "misa-left-walk.", start: 0, end: 3, zeroPad: 3 }),
+			frameRate: 4,
+			repeat: -1 });
+
+		anims.create({
+			key: "misa-right-walk",
+			frames: anims.generateFrameNames(`atlas`, { prefix: "misa-right-walk.", start: 0, end: 3, zeroPad: 3 }),
+			frameRate: 4,
+			repeat: -1 });
+
+		anims.create({
+			key: "misa-front-walk",
+			frames: anims.generateFrameNames(`atlas`, { prefix: "misa-front-walk.", start: 0, end: 3, zeroPad: 3 }),
+			frameRate: 4,
+			repeat: -1 });
+
+		anims.create({
+			key: "misa-back-walk",
+			frames: anims.generateFrameNames(`atlas`, { prefix: "misa-back-walk.", start: 0, end: 3, zeroPad: 3 }),
+			frameRate: 4,
+			repeat: -1 });
+
+		this.overlay_0 = createOverlay(this, 0xffffff, 0.25);
+		this.overlay_1 = createOverlay(this, 0xffffff, 0.25);
+
+	}
+
+
+	function createOverlay(scene, color, alpha) {
+		const overlay = scene.add.rectangle(
+			config.width / 2,
+			config.height / 2,
+			config.width,
+			config.height,
+			color,
+			alpha
+		);
+		overlay.setDepth(4);
+		return overlay;
+	}
+
+
+
+	function update(time, delta) {
+		// buttons 
+		let play_context = this;
+		function game_resume() {  
+			play_context.scene.resume();
+		}  
+		play_button.onclick = function(){
+			game_resume();
+		};
+		function game_pause() {  
+			play_context.scene.pause();
+		}  
+		pause_button.onclick = function(){
+			game_pause();
+		};
+
+		// *** MOVE CAMERA *** 
+		const camera_speed = 400;
+		const camera_zoom_speed = 0.02;
+		const camera_zoom_min = 0.2;	  
+		player.body.setVelocity(0);
+		if (cursors.left.isDown) {
+		player.body.setVelocityX(-camera_speed);
+		} else if (cursors.right.isDown) {
+		player.body.setVelocityX(camera_speed);
+		}
+
+		if (cursors.up.isDown) {
+		player.body.setVelocityY(-camera_speed);
+		} else if (cursors.down.isDown) {
+		player.body.setVelocityY(camera_speed);
+		}
+
+		if (plus.isDown) {
+		camera.setZoom(camera.zoom + camera_zoom_speed);
+		}
+
+		if (minus.isDown && camera.zoom > camera_zoom_min) {
+		camera.setZoom(camera.zoom - camera_zoom_speed);
+		}
+
+		if (phase == "process") {
+					
+
+			let data = {"step": step, 
+									"sim_code": sim_code,
+						"environment": {}}
+			for (let i=0; i<Object.keys(personas).length; i++) {
+			let persona_name = Object.keys(personas)[i];
+
+
+			data["environment"][persona_name] = {"maze": curr_maze,
+												"x": Math.ceil((personas[persona_name].body.position.x) / tile_width),
+												"y": Math.ceil((personas[persona_name].body.position.y) / tile_width)}
+	/*
+			data["environment"][persona_name] = {"maze": curr_maze,
+												"x": personas[persona_name].body.x / tile_width,
+												"y": personas[persona_name].body.y / tile_width,}
+	*/
+
+			console.log(`frontend_x: ${Math.ceil((personas[persona_name].body.x) / tile_width)}  frontend_y: ${Math.ceil((personas[persona_name].body.y) / tile_width)}`);
+			}
+			
+			var json = JSON.stringify(data);
+			// We then send this to the frontend server: 
+			var retrieve_xobj = new XMLHttpRequest();
+			retrieve_xobj.overrideMimeType("application/json");
+			console.log(`cccccccccccccccccccc!`); 
+			console.log(json);
+			retrieve_xobj.open('POST', "{% url 'process_environment' %}", true);
+			retrieve_xobj.send(json);   
+			// Finally, we update the phase variable to start the "udpate" process. 
+			// Now that we sent all persona locations to the backend server, we need
+			// to wait until the backend determines what the personas will do next. 
+			phase = "update";
+		}
+
+		// backend -> frontend
+		else if (phase == "update") { 
+			if (timer <= 0) {
+			var update_xobj = new XMLHttpRequest();
+			update_xobj.overrideMimeType("application/json");
+			update_xobj.open('POST', "{% url 'update_environment' %}", true);
+			update_xobj.addEventListener("load", function() {
+				if (this.readyState === 4) {
+				if (update_xobj.status === 200) {
+					if (JSON.parse(update_xobj.responseText)["<step>"] == step) {
+					execute_movement = JSON.parse(update_xobj.responseText)
+					phase = "execute";
+					}
+					timer = timer_max;
+				}
+				}
+			});
+			update_xobj.send(JSON.stringify({"step": step, "sim_code": sim_code })); 
+			console.log(`step: ${step}, sim_code: ${sim_code}`); 
+			}
+			timer = timer - 1; 
+		} 
+
+		else {
+			document.getElementById("game-time-content").innerHTML = execute_movement["meta"]["cur_time"];
+			document.getElementById("game-weather-content").innerHTML = execute_movement["meta"]["weather"];
+
+			let [date_part, time_part] = execute_movement["meta"]["cur_time"].split(' ');
+			let [time_h, time_m, time_s] = time_part.split(':').map(x => parseInt(x, 10));
+
+			if (time_h>=19 || time_h<4) {
+				this.overlay_0.setFillStyle(0x000000, 0.5);
+				this.overlay_1.setFillStyle(0x000000, 0);
+			} else if (time_h<6) {
+				color_change = (time_h-4+time_m/60+time_s/3600)/2;
+				console.log(color_change)
+				this.overlay_0.setFillStyle(0x000000, 0.5*(1-color_change));
+				this.overlay_1.setFillStyle(0xffffff, 0.3*color_change);
+			} else if (time_h<8) {
+				color_change = (time_h-6+time_m/60+time_s/3600)/2;
+				console.log(color_change)				
+				this.overlay_0.setFillStyle(0x000000, 0);
+				this.overlay_1.setFillStyle(0xffffff, 0.3*(1-color_change));
+			} else if (time_h<15) {
+				this.overlay_0.setFillStyle(0x000000, 0);
+				this.overlay_1.setFillStyle(0xffffff, 0);				
+			} else if (time_h<17) {
+				color_change = (time_h-15+time_m/60+time_s/3600)/2;
+				console.log(color_change)
+				this.overlay_0.setFillStyle(0x000000, 0);
+				this.overlay_1.setFillStyle(0xffa500, 0.2*color_change);
+			} else {
+				color_change = (time_h-17+time_m/60+time_s/3600)/2;
+				console.log(color_change);
+				this.overlay_0.setFillStyle(0x000000, 0.5*color_change);
+				this.overlay_1.setFillStyle(0xffa500, 0.2*(1-color_change));
+			}
+			
+			
+			for (let i=0; i<Object.keys(personas).length; i++) {
+				let curr_persona_name = Object.keys(personas)[i];
+				let curr_persona = personas[curr_persona_name];
+				let curr_pronunciatio = pronunciatios[Object.keys(personas)[i]];
+				let movement = execute_movement["persona"][curr_persona_name];
+
+				pronunciatios[curr_persona_name].setText(movement['name_initials'] + ": " + movement["pronunciatio"]);
+
+				move_num = movement["x_list"].length
+				
+				let curr_x = movement['x_list'][move_num-1] * tile_width;
+				let curr_y = movement['y_list'][move_num-1] * tile_width;	
+
+				let last_x = 0;
+				let last_y = 0;
+
+				if (movement['x_list'].length == 1) {
+					last_x = curr_persona.body.x;
+					last_y = curr_persona.body.y;
+				}else {
+					last_x = movement['x_list'][move_num-2] * tile_width;
+					last_y = movement['y_list'][move_num-2] * tile_width;
+				}
+				
+				if (last_x < curr_x) {
+					anims_direction = "r";
+					pre_anims_direction = "r";
+					pre_anims_direction_dict[curr_persona_name] = "r";
+				} else if (last_x > curr_x) {
+					anims_direction = "l";
+					pre_anims_direction = "l";
+					pre_anims_direction_dict[curr_persona_name] = "l";
+				} else if (last_y < curr_y) {
+					anims_direction = "d";
+					pre_anims_direction = "d";
+					pre_anims_direction_dict[curr_persona_name] = "d";
+				} else if (last_y > curr_y) {
+					anims_direction = "u";
+					pre_anims_direction = "u";
+					pre_anims_direction_dict[curr_persona_name] = "u";
+				} else {
+					anims_direction = "";
+				}
+
+				
+
+				if (anims_direction == "l") {
+					curr_persona.anims.play("misa-left-walk", true);
+				} else if (anims_direction == "r") {
+					curr_persona.anims.play("misa-right-walk", true);
+				} else if (anims_direction == "u") {
+					curr_persona.anims.play("misa-back-walk", true);
+				} else if (anims_direction == "d") {
+					curr_persona.anims.play("misa-front-walk", true);
+				} else {
+					curr_persona.anims.stop();
+					if (pre_anims_direction_dict[curr_persona_name] == "l") curr_persona.setTexture(`atlas`, "misa-left");else
+					if (pre_anims_direction_dict[curr_persona_name] == "r") curr_persona.setTexture(`atlas`, "misa-right");else
+					if (pre_anims_direction_dict[curr_persona_name] == "u") curr_persona.setTexture(`atlas`, "misa-back");else
+					if (pre_anims_direction_dict[curr_persona_name] == "d") curr_persona.setTexture(`atlas`, "misa-front");
+				};
+				
+
+				curr_persona.body.x = curr_x;
+				curr_persona.body.y = curr_y;
+
+				curr_persona.body.enable = false;
+				curr_persona.setPosition(curr_x+18, curr_y);
+	
+
+				curr_pronunciatio.x = curr_persona.body.x - 6; 
+				curr_pronunciatio.y = curr_persona.body.y - 42 - 32; 
+
+			}
+
+
+			// movement->html
+			for (let i=0; i<Object.keys(personas).length; i++) {
+				let action_description = ""
+				let curr_persona_name = Object.keys(personas)[i];
+				let movement = execute_movement["persona"][curr_persona_name]
+				// let curr_persona_name_os = movement['name_initials']
+				let curr_persona_name_os = curr_persona_name
+				let chat_content = ""
+
+				if (movement["chat"] != null ){
+					chat_content = movement["chat"]
+					chat_content = chat_content.replace(/\n/g, "<br>");
+					} else {
+					chat_content = "<em>None at the moment</em>"
+					}
+
+				document.getElementById("current_action__"+curr_persona_name_os).innerHTML = movement['description'];
+				document.getElementById("target_address__"+curr_persona_name_os).innerHTML = movement['place'];
+				document.getElementById("chat__"+curr_persona_name_os).innerHTML = chat_content;
+
+				let requirementsDiv = document.getElementById("basic_requirements__" + curr_persona_name_os);
+				let requirements = movement['requirements'];
+				let content = '<div style="display: flex; flex-wrap: nowrap; align-items: center;">';
+
+
+				for (const [key, value] of Object.entries(requirements)) {
+					if (key == 'Fullness'){
+						key_emoji = '🍗'
+					} else if (key == 'Happiness'){
+						key_emoji = '😊'
+					} else if (key == 'Health'){
+						key_emoji = '❤️'
+					} else if (key == 'Energy'){
+						key_emoji = '⚡️'
+					} else{
+						key_emoji = '🧑‍🤝‍🧑'
+					}
+
+					content += `
+						<div style="border: 2px solid #ccc; border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+							<div style="display: flex; align-items: center; margin-left: 20px; font-size: 1.5em; margin-top: 10px;">
+								<span style="width: 150px; text-align: left; margin-left: 0px; margin-right: 0px; margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 2em;">${key_emoji}</span>
+								<div style="background-color: #ccc; border-radius: 10px; width: 300px; height: 40px; display: inline-block; margin-top: 10px;">
+									<div style="background-color: ${value < 3 ? 'red' : value >= 3 && value <= 6 ? 'orange' : 'green'}; height: 100%; border-radius: 10px; width: ${value * 10}%;"></div>
+								</div>
+								<span style="margin-left: 30px; margin-right: 60px; width: 30px; text-align: right; display: inline-block; font-size: 1.5em;">${value}</span>
+							</div>
+						</div>
+					`;
+				}
+				
+
+				content += '</div>';
+				requirementsDiv.innerHTML = content;
+
+
+			}
+
+			phase = "process";
+			step = step + 1;
+
+			}
+		
+	}
+	var play_button=document.getElementById("play_button");
+	var pause_button=document.getElementById("pause_button");	
+</script>

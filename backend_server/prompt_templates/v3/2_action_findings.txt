@@ -1,0 +1,15 @@
+<task description>
+You have performed the action: !<INPUT 1>!,  in the <place>: !<INPUT 2>!.
+Your task is to generate your action findings.
+
+<Your self introduction>
+!<INPUT 0>!
+
+<output example>
+I was singing at the bar in the department store. 
+The new roses are red and beautiful, and the birds are singing in the sky. I found the dishes in the park very delicious, and I enjoyed the refreshing taste and unique blend of flavors.
+
+<requirement>
+Use one sentence to describe what and where you executed the action. Use two sentences to describe your feelings and findings.
+The feelings and findings could be good or bad. You could decide that based on the characteristics randomly.
+Output the action findings in English! Do not output anything else!

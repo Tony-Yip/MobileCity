@@ -1,0 +1,20 @@
+<task description>
+Please decide which action should the person execute next.
+Firstly, read the <persona> of this person.
+Secondly, read the <action information> of several action choices, which is in csv format. Each action has a choice number and an action place. The smaller the choice number, the stronger the person's behavioral tendency towards that action.
+Thirdly, read the <place description> of action places.
+Finally, output the choice number of the action you selected. Output the number only!
+The time is !<INPUT 3>! now.
+
+<persona>
+!<INPUT 0>!
+
+<action information>
+!<INPUT 1>!
+
+<place description>
+!<INPUT 2>!
+
+<output example>
+**Answer**
+6

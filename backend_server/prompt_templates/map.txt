@@ -1,0 +1,86 @@
+- Company A
+-- Office A
+-- Office B
+-- Company Canteen
+-- Convenience Store
+- Apartment A
+-- Room A
+-- Room B
+-- Room C
+-- Room D
+-- Restaurant
+-- Convenience Store
+- Apartment B
+-- Room A
+-- Room B
+-- Room C
+-- Restaurant
+-- Convenience Store
+- Apartment C
+-- Room A
+-- Room B
+-- Room C
+-- Room D
+-- Restaurant
+-- Convenience Store
+- Company B
+-- Office A
+-- Office B
+-- Office C
+-- Office D
+-- Company Canteen
+-- Convenience Store
+- Hospital
+-- Hospital
+- Apartment D
+-- Room A
+-- Room B
+-- Room C
+-- Restaurant
+-- Convenience Store
+- Park A
+-- Park
+- Apartment E
+-- Room A
+-- Room B
+-- Room C
+-- Restaurant
+-- Convenience Store
+- Department Store
+-- Convenience Store
+-- Movie Theatre
+-- Shopping Mall
+-- Bar
+- Park B
+-- Park
+- Apartment F
+-- Room A
+-- Room B
+-- Room C
+-- Room D
+-- Restaurant
+-- Convenience Store
+- Apartment G
+-- Room A
+-- Room B
+-- Room C
+-- Restaurant
+-- Convenience Store
+- Apartment H
+-- Room A
+-- Room B
+-- Room C
+-- Room D
+-- Restaurant
+-- Convenience Store
+- Park C
+-- Park
+- Park D
+-- Park
+- Sports Centre
+-- Ball Court
+-- Gym
+-- Swimming Pool
+-- Convenience Store
+- Park E
+-- Park

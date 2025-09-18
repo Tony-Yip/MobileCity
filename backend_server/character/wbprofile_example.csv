@@ -1,0 +1,4 @@
+,agent_id,monitor_id,sex,age,job_category,academic_history,house_income,HP_0,HP_1,HP_2,HP_3,HP_4,HP_5,HP_6,HP_7,HP_8,HP_9,HP_10,HP_11,HP_12,HP_13,HP_14,HP_15,summary,traits,living_place,working_place,working_time,sleeping_time,x,y,cat
+0,G-A-0,123,male,33,employed,university,very low,0.23,0.67,0.84,0.12,0.95,0.38,0.71,0.06,0.52,0.89,0.45,0.78,0.13,0.64,0.91,0.27,-,-,Apartment G:Room A,Company A:Office B,08:05:00 - 17:05:00,23:30:00 - 06:27:00,56,62,110
+1,A-D-0,456,female,26,employed,graduate school,nomral,0.56,0.19,0.83,0.42,0.75,0.08,0.61,0.94,0.37,0.72,0.15,0.86,0.49,0.03,0.68,0.92,-,-,Apartment A:Room D,Company A:Office A,08:43:00 - 17:43:00,21:04:00 - 06:48:00,43,13,110
+2,E-B-0,789,male,50,unemployed,high school,very high,0.34,0.81,0.07,0.59,0.26,0.73,0.90,0.44,0.17,0.65,0.82,0.29,0.96,0.51,0.18,0.74,-,-,Apartment E:Room B,,,21:43:00 - 06:40:00,83,33,201

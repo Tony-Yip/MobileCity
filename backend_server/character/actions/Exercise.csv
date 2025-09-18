@@ -1,0 +1,15 @@
+Place,Action,Fullness,Energy,Health,Happiness,EarliestStartTime,LatestStartTime,ShortestExecutionTime,SettingGoals,VisualizingHealthChanges,Stimulation,Achievement,Emoji,Importance
+Swimming Pool,swim laps,-1.5,-0.5,2.5,1,6:00,21:15,0:45,0.7,0.8,0.7,0.6,🏊,5
+Swimming Pool,practice diving,-1.2,0.3,1.8,1,6:00,21:00,1:00,0.6,0.8,0.8,0.7,🤿,7
+Gym,lift weights,-1.5,1.5,1.5,0.5,6:00,21:00,1:00,0.8,0.7,0.8,0.6,🏋️,5
+Gym,run on a treadmill,-1.8,1,1.5,0.4,6:00,21:30,0:30,0.7,0.6,0.7,0.5,🏃,5
+Gym,stretch in the yoga area,-0.8,0.8,1.2,0.6,6:00,21:15,0:45,0.6,0.7,0.6,0.8,🧘,4
+Ball Court,play basketball,-2,1.2,1.3,2.5,6:00,20:30,1:30,0.6,0.7,0.9,0.8,🏀,6
+Ball Court,play badminton,-1.5,1,1.2,1.3,6:00,21:00,1:00,0.6,0.6,0.7,0.8,🏸,5
+Ball Court,play tennis,-1.7,1.1,1.4,2.2,6:00,20:30,1:30,0.7,0.7,0.8,0.7,🎾,5
+Park: Botanical Garden,participate in a guided nature walk,-0.5,1,0.8,2,6:00,16:30,1:30,0.6,0.7,0.6,0.9,🌼,6
+Park: Water Park,swim laps,-1.5,-0.5,3,1,6:00,17:00,1:00,0.7,0.8,0.7,0.8,🌊,5
+Park: Community Park,jog along the walking trails,-1.3,0.5,1.2,1.4,6:00,17:15,0:45,0.7,0.6,0.5,0.6,🛤️,5
+Park: Playground Park,enjoy a solitary walk,-0.5,0.2,0.7,1,6:00,17:30,0:30,0.5,0.6,0.5,0.6,🚶,4
+Park: Nature Reserve,go on a challenging hiking trail,-1.4,1.4,3.5,2.6,6:00,15:00,3:00,0.8,0.8,0.8,0.9,🥾,7
+Hospital,see the doctor,0,2,4,0,6:00,21:00,3:00,0.5,0.5,0.5,0.5,💉,9

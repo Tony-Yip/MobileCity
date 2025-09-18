@@ -1,0 +1,19 @@
+<task description>
+The current time is !<INPUT 2>!. !<INPUT 0>! was performing the action: !<INPUT 4>!, and !<INPUT 1>! was performing the action: !<INPUT 5>!.
+They had a conversation. Summarize their impression on each other.
+
+<!<INPUT 3>!
+
+<!<INPUT 6>!
+
+<!<INPUT 7>!
+
+<output example>
+--!<INPUT 0>!: !<INPUT 1>! is a football player. !<INPUT 1>! loves sports so much. We talked about dragon boat matches as well.
+
+--!<INPUT 1>!: !<INPUT 0>! is friendly and kind, but a bit shy. !<INPUT 0>! cooks everyday at home.
+
+<requirements>
+Summarized !<INPUT 0>! and !<INPUT 1>!'s impression on each other.
+The feelings and findings could be good or bad. You could decide that based on the characteristics randomly.
+You MUST output the summary in English. Output the dialogue ONLY!!!

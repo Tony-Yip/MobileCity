@@ -1,0 +1,29 @@
+<task description>
+The current time is !<INPUT 2>!. !<INPUT 0>! and !<INPUT 1>! meet each other and start talking.
+They are performing the action: <!<INPUT 3>!, in the place: <!<INPUT 4>!.
+Generate their dialogues.
+
+<!<INPUT 11>!
+
+<!<INPUT 12>!
+
+<!<INPUT 0>!'s memory>
+<!<INPUT 5>!
+<!<INPUT 6>!
+<!<INPUT 7>!
+
+<!<INPUT 1>!'s memory>
+<!<INPUT 8>!
+<!<INPUT 9>!
+<!<INPUT 10>!
+
+<output example>
+!<INPUT 0>!: I've been reading a lot lately. Have you been into any new books lately?  
+
+!<INPUT 1>!: Yes, I've been into some puzzle books. They keep me sharp. I think it's good to challenge the mind. 
+
+<requirements>
+The two persons should talk with oral languages naturally, just like real humans.
+The dialogue could be postive or negative. You could decide that based on the characteristics randomly.
+You MUST output the dialogue in English. Output the dialogue ONLY!!!
+The dialogue should be no longer than 400 words.

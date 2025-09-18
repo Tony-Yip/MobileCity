@@ -1,0 +1,109 @@
+{
+    "Restaurant: Green Leaf Bistro":{
+        "sector": "Apartment A",
+        "arena": "Restaurant"
+    },
+    "Restaurant: Ramen Express":{
+        "sector": "Apartment B",
+        "arena": "Restaurant"
+    },
+    "Restaurant: Sushi Delight":{
+        "sector": "Apartment C",
+        "arena": "Restaurant"
+    },
+    "Restaurant: Burger Town":{
+        "sector": "Apartment D",
+        "arena": "Restaurant"
+    },
+    "Restaurant: Tofu House":{
+        "sector": "Apartment E",
+        "arena": "Restaurant"
+    },
+    "Restaurant: Tempura Haven":{
+        "sector": "Apartment F",
+        "arena": "Restaurant"
+    },
+    "Restaurant: Garden Fresh":{
+        "sector": "Apartment G",
+        "arena": "Restaurant"
+    },
+    "Restaurant: Yakitori Hub":{
+        "sector": "Apartment H",
+        "arena": "Restaurant"
+    },
+    
+
+    "Bar":{
+        "sector": "Department Store",
+        "arena": "Bar"
+    },
+    "Movie Theatre":{
+        "sector": "Department Store",
+        "arena": "Movie Theatre"
+    },
+    "Shopping Mall":{
+        "sector": "Department Store",
+        "arena": "Shopping Mall"
+    },
+
+
+    "Cafe":{
+        "sector": "Sports Centre",
+        "arena": "Cafe"
+    },
+    "Swimming Pool":{
+        "sector": "Sports Centre",
+        "arena": "Swimming Pool"
+    },
+    "Ball Court":{
+        "sector": "Sports Centre",
+        "arena": "Ball Court"
+    },
+    "Gym":{
+        "sector": "Sports Centre",
+        "arena": "Gym"
+    },
+
+    "Concert Hall":{
+        "sector": "Apartment A",
+        "arena": "Concert Hall"
+    },
+    "Bookstore":{
+        "sector": "Apartment C",
+        "arena": "Bookstore"
+    },
+    "Museum":{
+        "sector": "Apartment F",
+        "arena": "Museum"
+    },
+    "Community Center":{
+        "sector": "Apartment H",
+        "arena": "Community Center"
+    },
+
+    "Park: Botanical Garden":{
+        "sector": "Park A",
+        "arena": "Park"
+    },
+    "Park: Water Park":{
+        "sector": "Park B",
+        "arena": "Park"
+    },
+    "Park: Community Park":{
+        "sector": "Park C",
+        "arena": "Park"
+    },
+    "Park: Playground Park":{
+        "sector": "Park D",
+        "arena": "Park"
+    },
+    "Park: Nature Reserve":{
+        "sector": "Park E",
+        "arena": "Park"
+    },
+
+    "Hospital":{
+        "sector": "Hospital",
+        "arena": "Hospital"
+    }    
+}

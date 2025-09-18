@@ -1,0 +1,7 @@
+aiohttp==3.12.14
+chromadb==1.0.20
+Django==4.2.20
+networkx==3.2.1
+numpy==2.3.2
+pandas==2.3.2
+scipy==1.16.1

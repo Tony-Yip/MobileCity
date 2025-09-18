@@ -1,0 +1,4 @@
+<!<INPUT 0>!'s self introduction>
+I am !<INPUT 0>!, !<INPUT 1>!, !<INPUT 2>! years old, !<INPUT 3>!. 
+With the educational background of !<INPUT 4>!, !<INPUT 5>! income.
+!<INPUT 6>!
