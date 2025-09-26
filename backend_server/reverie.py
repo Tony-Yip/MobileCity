@@ -254,7 +254,7 @@ if __name__ == '__main__':
 
   parser = argparse.ArgumentParser(description="Start simulation!")
   parser.add_argument('--start_date', type=str, required=False, default='20250908', help='The start date of the experiment.')
-  parser.add_argument('--agent_num', type=str, required=False, default=1, help='The number of agents.')  
+  parser.add_argument('--agent_num', type=int, required=False, default=1, help='The number of agents.')  
   parser.add_argument('--max_step', type=int, required=False, default=5760, help='The maximum number of simulation steps. For simulation in one day, the max step is 5760.')
   parser.add_argument('--max_api', type=int, required=False, default=1, help='The maximum number of concurrent API requests.')
   parser.add_argument('--is_generate_agent_memory', type=bool, required=False, default=False, help='Whether to generate agent memory.')
