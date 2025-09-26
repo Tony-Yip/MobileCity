@@ -16,11 +16,11 @@ If you just want to run the demo of previous experiments, jump to Step 3.
 #### 2.1 Start simulation
 In `backend_server`, run the following command:
 ```
-python reverie.py --start_date <Start date> --agent_num <Number of agents> --max_step <Maximum steps> --max_api <Maximum concurrent API requests> --is_generate_agent_memory <Whether generate agent memories or not>
+python reverie.py --start_date <Start date> --agent_num <Number of agents> --max_step <Maximum steps> --max_api <Maximum concurrent API requests>
 ```
 For example,
 ```
-python reverie.py --start_date 20250908 --agent_num 10 --max_step 5760 --max_api 1 -- is_generate_agent_memory False
+python reverie.py --start_date 20250908 --agent_num 10 --max_step 5760 --max_api 1
 ```
 
 #### 2.2 Check the output
