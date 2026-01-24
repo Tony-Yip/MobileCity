@@ -1,10 +1,10 @@
-# MobileCity
+# MobileCity: An Efficient Framework for Large-Scale Urban Behavior Simulation
 <p align="center" width="100%">
 <img src="cover.png" alt="Virtual City" style="width: 80%; min-width: 300px; display: block; margin: auto;">
 </p>
-MobileCity is a lightweight simulation platform based on a tilebased city representation. The project goal is to generate agent behaviors in the virtual City. This repository accompanies our research paper titled: 
-
-[MobileCity: An Efficient Framework for Large-Scale Urban Behavior Simulation](https://arxiv.org/abs/2504.16946)
+MobileCity is a lightweight simulation platform based on a tilebased city representation. The project goal is to generate agent behaviors in the virtual City. 
+This repository accompanies our research paper titled: [MobileCity: An Efficient Framework for Large-Scale Urban Behavior Simulation](https://arxiv.org/abs/2504.16946)
+Our paper is accepted to EACL2026.
 
 ## How to run the simulation
 ### 1 Install dependencies
