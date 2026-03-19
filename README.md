@@ -1,4 +1,4 @@
-# MobileCity: An Efficient Framework for Large-Scale Urban Behavior Simulation
+# [EACL 2026] MobileCity: An Efficient Framework for Large-Scale Urban Behavior Simulation
 <p align="center" width="100%">
 <img src="cover.png" alt="Virtual City" style="width: 80%; min-width: 300px; display: block; margin: auto;">
 </p>
